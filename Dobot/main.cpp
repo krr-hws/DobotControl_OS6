@@ -109,7 +109,7 @@ int main(void)
   ProtocolInit();
   InitRAM();
   // start timer after ProtocolInit();
-  processTicker.attach(&tickerFunction, 1s);
+  processTicker.attach(&tickerFunction, 100ms);
   // ProtocolProcess() is called in tim2 callback
 
   while (1)

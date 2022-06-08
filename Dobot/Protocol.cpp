@@ -83,16 +83,16 @@ void ProtocolProcess(void)
     	//HAL_UART_Transmit_IT(&huart1, &data, sizeof (data));
     }
 
-    if(MessageRead(&gUART4ProtocolHandler, &message)==ProtocolNoError)
-    {
-    	if(message.id == ProtocolIRSwitch && message.rw == 0){
-    		irSensorAnswer = true;
-    		gIRRxMessage = message;
-    	}
-    	if(message.id == ProtocolColorSensor && message.rw == 0){
-    		colorSensorAnswer = true;
-    	    gColorRxMessage = message;
-    	}
-
+    while(RingBufferIsEmpty(&gUART4ProtocolHandler.rxPacketQueue) == false){
+        if(MessageRead(&gUART4ProtocolHandler, &message)==ProtocolNoError){
+            if(message.id == ProtocolIRSwitch && message.rw == 0){
+                irSensorAnswer = true;
+                gIRRxMessage = message;
+            }
+            if(message.id == ProtocolColorSensor && message.rw == 0){
+                colorSensorAnswer = true;
+                gColorRxMessage = message;
+            }
+        }
     }
 }
