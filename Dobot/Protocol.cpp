@@ -16,11 +16,11 @@
 ** Descriptions:
 **--------------------------------------------------------------------------------------------------------
 *********************************************************************************************************/
-#include "stm32f4xx.h"
+//#include "stm32f4xx.h"
 #include "Protocol.h"
 #include <stdio.h>
 #include <string.h>
-#include "stm32f4xx_hal_uart.h"
+//#include "stm32f4xx_hal_uart.h"
 #include "main.h"
 #include "command.h"
 #include "ProtocolID.h"
